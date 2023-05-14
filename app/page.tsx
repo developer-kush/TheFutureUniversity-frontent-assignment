@@ -10,6 +10,11 @@ type todoType = {
   checked: boolean
 }
 
+// Seperated Checkbox, Button and TodoRow Components as per the requirements
+// These can be kept in seperate files and imported here as well
+// We could make a directory named "components" in root directory to store such reusable components
+
+// Checkbox Component
 const CheckBox = ({ checked, onChange }: { checked: boolean, onChange: () => void }) => {  
   return (
     <input 
@@ -21,12 +26,14 @@ const CheckBox = ({ checked, onChange }: { checked: boolean, onChange: () => voi
   );
 }
 
+// Delete Button Component
 const Button = ({ID, delfunc}:{ID:number, delfunc:(ID:number)=>void}) =>{
   return <span className="mr-4 ml-auto group-hover:flex hidden cursor-pointer bg-red-500 text-white px-2 rounded-md"
   onClick={()=>delfunc(ID)}
 >X</span>
 }
 
+// Todo Row Component
 const TodoRow = ({ID, value, checked, onChange, delfunc}:{ID:number, value:string, checked: boolean, onChange: () => void, delfunc:(id:number)=>void}) => {
   return (
     <div className="relative flex m-2 mx-4 group py-2.5 p-4 w-auto items-center text-white text-lg font-semibold bg-[#333333] rounded-md">
@@ -43,6 +50,7 @@ const TodoRow = ({ID, value, checked, onChange, delfunc}:{ID:number, value:strin
   )
 }
 
+// Todo List Container Component
 const TodoList = () => {
 
   // Event Handler for Input focus on pressing "/" key
@@ -144,6 +152,7 @@ const TodoList = () => {
   )
 }
 
+// Main Component
 export default function Home() {
   return (
     <main className="w-full h-screen bg-gradient-to-br from-[#123456] to-green-500 flex items-center justify-center">
